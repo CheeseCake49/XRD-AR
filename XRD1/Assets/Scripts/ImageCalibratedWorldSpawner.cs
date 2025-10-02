@@ -33,29 +33,50 @@ public class ImageCalibratedWorldSpawner : MonoBehaviour
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs args)
     {
-        foreach (var img in args.added)   Handle(img);
+        Debug.Log($"Images Changed - Added: {args.added.Count}, Updated: {args.updated.Count}, Removed: {args.removed.Count}");
+
+        foreach (var img in args.added) Handle(img);
         foreach (var img in args.updated) Handle(img);
         foreach (var img in args.removed) HandleRemoved(img);
     }
 
     private void Handle(ARTrackedImage arImg)
     {
-        if (arImg.referenceImage.name != referenceImageName) return;
+        Debug.Log($"Handle called - Name: {arImg.referenceImage.name}, TrackingState: {arImg.trackingState}");
+
+        if (arImg.referenceImage.name != referenceImageName)
+        {
+            Debug.LogWarning($"Name mismatch! Expected: {referenceImageName}");
+            return;
+        }
 
         if (arImg.trackingState == TrackingState.Tracking)
         {
-            if (spawnOnce && alignedOnce) return;
-            if (worldInstance == null)
-                SpawnWorldInstance();
+            Debug.Log($"TRACKING! spawnOnce={spawnOnce}, alignedOnce={alignedOnce}, worldInstance={(worldInstance == null ? "NULL" : "EXISTS")}");
 
+            if (spawnOnce && alignedOnce)
+            {
+                Debug.Log("Skipping - already aligned once");
+                return;
+            }
+
+            if (worldInstance == null)
+            {
+                Debug.Log("Spawning world instance!");
+                SpawnWorldInstance();
+            }
+
+            Debug.Log($"Aligning world to image position: {arImg.transform.position}");
             AlignWorldToImage(arImg);
 
             if (!alignedOnce) alignedOnce = true;
 
             SetWorldActive(true);
+            Debug.Log("World should now be visible!");
         }
-        else // Limited or None
+        else
         {
+            Debug.Log($"Tracking state is: {arImg.trackingState} (not Tracking)");
             if (!keepVisibleIfTrackingLost)
                 SetWorldActive(false);
         }
