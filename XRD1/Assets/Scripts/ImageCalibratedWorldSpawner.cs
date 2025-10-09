@@ -195,22 +195,38 @@ public class ImageCalibratedWorldSpawner : MonoBehaviour
 
     private void HideAllExceptTarget()
     {
-        Debug.Log("[Spawner] Hiding all renderers except target...");
+        Debug.Log("[Spawner] ===== HIDING WORLD EXCEPT TARGET =====");
+        Debug.Log($"[Spawner] Target: {navigationTarget.name}");
 
-        Renderer[] allRenderers = worldInstance.GetComponentsInChildren<Renderer>();
-        Renderer[] targetRenderers = navigationTarget.GetComponentsInChildren<Renderer>();
-
-        Debug.Log($"[Spawner] Found {allRenderers.Length} total renderers, {targetRenderers.Length} target renderers");
-
-        int hiddenCount = 0;
-        foreach (Renderer r in allRenderers)
+        // Hide all top-level children except the one containing the target
+        foreach (Transform child in worldInstance.transform)
         {
-            bool isTargetRenderer = System.Array.Exists(targetRenderers, tr => tr == r);
-            r.enabled = !isTargetRenderer;
-            if (!isTargetRenderer) hiddenCount++;
-        }
+            bool containsTarget = IsChildOf(navigationTarget, child);
 
-        Debug.Log($"[Spawner] Hidden {hiddenCount} renderers, kept {targetRenderers.Length} visible");
+            if (containsTarget)
+            {
+                Debug.Log($"[Spawner] KEEPING VISIBLE: {child.name} (contains target)");
+                child.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log($"[Spawner] HIDING: {child.name}");
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    // Check if 'child' is a descendant of 'parent'
+    private bool IsChildOf(Transform child, Transform parent)
+    {
+        Transform current = child;
+        while (current != null)
+        {
+            if (current == parent)
+                return true;
+            current = current.parent;
+        }
+        return false;
     }
 
     private Transform FindDeepChild(Transform parent, string name)
