@@ -75,7 +75,11 @@ public class M16Navigation : MonoBehaviour
         // Position arrow in front of camera with offset
         Vector3 forwardPos = mainCamera.transform.position +
                             mainCamera.transform.forward * distanceFromCamera;
-        transform.position = forwardPos + mainCamera.transform.TransformDirection(offset);
+        Vector3 desiredPosition = forwardPos + mainCamera.transform.TransformDirection(offset);
+
+        desiredPosition.y = Mathf.Max(desiredPosition.y, 0.2f);
+
+        transform.position = desiredPosition;
 
         // Calculate direction to target
         Vector3 directionToTarget = target.position - mainCamera.transform.position;
