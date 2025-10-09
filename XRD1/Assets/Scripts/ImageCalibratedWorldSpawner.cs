@@ -17,6 +17,15 @@ public class ImageCalibratedWorldSpawner : MonoBehaviour
     [SerializeField] private bool keepVisibleIfTrackingLost = true; // keep content after first lock
     [SerializeField] private bool reAlignOnEveryGoodTrack = false;  // re-snap on each strong update
 
+    [Header("Navigation")]
+    [SerializeField] private string targetObjectName = "Kani";
+    [SerializeField] private M16Navigation navigationArrow;
+
+    private Transform navigationTarget;
+
+    [Header("Visibility")]
+    [SerializeField] private bool hideWorldExceptTarget = false;
+
     private GameObject worldInstance;
     private Transform markerOriginInInstance;
     private bool alignedOnce;
@@ -91,8 +100,35 @@ public class ImageCalibratedWorldSpawner : MonoBehaviour
 
     private void SpawnWorldInstance()
     {
+        Debug.Log("[Spawner] Creating world instance...");
         worldInstance = Instantiate(worldRootPrefab);
         markerOriginInInstance = FindMarkerOrigin(worldInstance, markerOriginChildName);
+
+        // Search recursively through all descendants
+        Debug.Log($"[Spawner] Searching for target: '{targetObjectName}'");
+        navigationTarget = FindDeepChild(worldInstance.transform, targetObjectName);
+
+        if (navigationTarget == null)
+            Debug.LogError($"[Spawner] Navigation target '{targetObjectName}' NOT FOUND in world prefab!");
+        else
+        {
+            Debug.Log($"[Spawner] ✓ Navigation target found: {navigationTarget.name} at {navigationTarget.position}");
+            if (navigationArrow != null)
+            {
+                Debug.Log("[Spawner] Setting arrow target...");
+                navigationArrow.SetTarget(navigationTarget);
+            }
+            else
+            {
+                Debug.LogError("[Spawner] NavigationArrow reference is NULL!");
+            }
+        }
+
+        // Hide world except target if enabled
+        if (hideWorldExceptTarget && navigationTarget != null)
+        {
+            HideAllExceptTarget();
+        }
     }
 
     private Transform FindMarkerOrigin(GameObject root, string childName)
@@ -108,7 +144,7 @@ public class ImageCalibratedWorldSpawner : MonoBehaviour
     {
         // Pose of the marker in world space
         var imgPos = arImg.transform.position;
-        var imgRot = arImg.transform.rotation;
+        var imgRot = arImg.transform.rotation * Quaternion.Euler(-90, 0, 0);
 
         if (markerOriginInInstance == null)
         {
@@ -148,6 +184,46 @@ public class ImageCalibratedWorldSpawner : MonoBehaviour
     private void SetWorldActive(bool active)
     {
         if (worldInstance != null && worldInstance.activeSelf != active)
+        {
             worldInstance.SetActive(active);
+            if (active && hideWorldExceptTarget && navigationTarget != null)
+            {
+                HideAllExceptTarget();
+            }
+        }
+    }
+
+    private void HideAllExceptTarget()
+    {
+        Debug.Log("[Spawner] Hiding all renderers except target...");
+
+        Renderer[] allRenderers = worldInstance.GetComponentsInChildren<Renderer>();
+        Renderer[] targetRenderers = navigationTarget.GetComponentsInChildren<Renderer>();
+
+        Debug.Log($"[Spawner] Found {allRenderers.Length} total renderers, {targetRenderers.Length} target renderers");
+
+        int hiddenCount = 0;
+        foreach (Renderer r in allRenderers)
+        {
+            bool isTargetRenderer = System.Array.Exists(targetRenderers, tr => tr == r);
+            r.enabled = !isTargetRenderer;
+            if (!isTargetRenderer) hiddenCount++;
+        }
+
+        Debug.Log($"[Spawner] Hidden {hiddenCount} renderers, kept {targetRenderers.Length} visible");
+    }
+
+    private Transform FindDeepChild(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+                return child;
+
+            Transform result = FindDeepChild(child, name);
+            if (result != null)
+                return result;
+        }
+        return null;
     }
 }
