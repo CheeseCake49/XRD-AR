@@ -77,7 +77,7 @@ public class M16Navigation : MonoBehaviour
                             mainCamera.transform.forward * distanceFromCamera;
         Vector3 desiredPosition = forwardPos + mainCamera.transform.TransformDirection(offset);
 
-        desiredPosition.y = Mathf.Max(desiredPosition.y, 0.2f);
+        desiredPosition.y = Mathf.Max(desiredPosition.y, -0.7f);
 
         transform.position = desiredPosition;
 
@@ -88,7 +88,7 @@ public class M16Navigation : MonoBehaviour
         if (directionToTarget.magnitude > 0.1f)
         {
             // Rotate arrow to point at target
-            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget) * Quaternion.Euler(0, -90, 0);
             transform.rotation = targetRotation;
         }
     }

@@ -464,7 +464,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 26803947859599b4d8af00e4b95bd8de, type: 2}
+      objectReference: {fileID: 2100000, guid: fb75bfe8c00314b849d32754a9077a92, type: 2}
     - target: {fileID: 5894697351204276762, guid: 0482fc774f15a6642b0be77b0b9cf87a,
         type: 3}
       propertyPath: m_Name
@@ -483,12 +483,12 @@ PrefabInstance:
     - target: {fileID: 6522897463702442144, guid: 0482fc774f15a6642b0be77b0b9cf87a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6522897463702442144, guid: 0482fc774f15a6642b0be77b0b9cf87a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 6522897463702442144, guid: 0482fc774f15a6642b0be77b0b9cf87a,
         type: 3}
@@ -498,7 +498,7 @@ PrefabInstance:
     - target: {fileID: 6522897463702442144, guid: 0482fc774f15a6642b0be77b0b9cf87a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.000000011176
       objectReference: {fileID: 0}
     - target: {fileID: 6522897463702442144, guid: 0482fc774f15a6642b0be77b0b9cf87a,
         type: 3}
@@ -569,7 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::M16Navigation
   target: {fileID: 0}
   use3DArrow: 1
-  distanceFromCamera: 2
+  distanceFromCamera: 1.5
   offset: {x: 0, y: -0.5, z: 0}
   distanceText: {fileID: 0}
 --- !u!1 &1075000274
