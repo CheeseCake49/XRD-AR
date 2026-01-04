@@ -1,12 +1,18 @@
-### List Of Contributions
+### Note On List Of Contributions
 
 Throughout this course everything has been created, tested, and worked on together. As for the DevBlogs, we have discussed what was to be included in a forum and then taken turns on who wrote the blogs.
 
-*Please note that pretty much all of the work was always done when all members were present.*
+*Please note that pretty much all of the work was always done when all members were present at VIA Campus.*
 
-If we were to point out who operated the computer in each phase, while the other members participated on the sideline, then the list would look like the following:
+---
 
-**Emil:**
+# **<ins>Personal Reflections on XRD<ins>**
+
+# Emil:
+
+##### List Of Contributions
+
+If I were to point out the elements I worked on while sitting at the computer, while the others sat next to me, then the list would look like the following:
 
 AR Project (1): 
 1. Mapped campus (Lidar scanner)
@@ -19,34 +25,7 @@ VR Padel Sim Project (2):
 2. Fixed racket physics
 3. Created ball spawning script
 
-
-**Johan:**
-
-AR Project (1): 
-1. Stitched the world together
-2. Fixed incorrect axis
-3. Created tracking script
-
-VR Padel Sim Project (2):
-1. Fixed ball physics
-2. Added ball zone hitmarkers script
-
-**Luu:**
-
-AR Project (1): 
-1. Found models (the weapon used as pointer)
-2. Created QR code for world calibration
-3. Created canteen pointer hovering script
-
-VR Padel Sim Project (2):
-1. Mapped the court and world
-2. Primary tester (given real world padel experience)
-
----
-
-# **<ins>Personal Reflections on XRD<ins>**
-
-# Emil:
+### Reflections
 
 Looking back on this semester, I'm surprised by how much I've learned. Coming into this course, I had zero experience with XR and I have barely even tried a VR headset before. Now, I'm sitting here considering getting my own VR headset, which I think says a lot about how this course went. 
 
