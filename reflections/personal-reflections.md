@@ -99,3 +99,37 @@ From a development standpoint, one of the most interesting challenges was achiev
 Across both projects, I learned that XR development is as much about managing constraints as it is about implementing features. Technical issues often stemmed not from incorrect code, but from tools, hardware, or perceptual factors that were difficult to predict in advance. Working collaboratively throughout the process helped mitigate some of this frustration, as problems were discussed and solved collectively rather than in isolation.
 
 On a personal level, these projects strengthened my ability to troubleshoot complex technical issues, adapt to unexpected setbacks, and make pragmatic decisions when ideal solutions were not feasible. Even when progress felt slow or inefficient, each challenge contributed to a better understanding of how AR and VR systems behave in practice. Overall, the semester provided a realistic and valuable insight into XR development, highlighting both its potential and its practical difficulties.
+
+---
+
+##### List Of Contributions
+
+Throughout the course, most development work was carried out collaboratively with all group members present. My primary contributions were focused on ideation, testing, evaluation, and documentation, as well as supporting implementation through feedback and iteration rather than direct scripting.
+
+### **AR Navigation Project**
+- Contributed to early idea generation and concept development for the navigation experience  
+- Participated in LiDAR scanning of the campus environment and refinement of scan segments  
+- Assisted with evaluating scan quality, identifying alignment issues, and testing different scanning approaches  
+- Took part in refining navigation flow and waypoint placement, including usability considerations  
+- Contributed to testing and validating AR alignment and tracking behaviour in real-world conditions  
+
+### **VR Padel Simulator**
+- Participated in concept development and design discussions, particularly around realism and user experience  
+- Acted as the primary tester, repeatedly testing the simulator in-headset and reporting issues related to physics, collisions, and scale perception  
+- Helped identify and document ball behaviour issues, including excessive speed, bounce inconsistencies, and collision problems  
+- Contributed feedback on court feel, scale, and usability, helping guide physics and visual adjustments  
+- Supported iteration by testing new builds and verifying fixes before moving forward  
+
+---
+
+## **Personal Reflection**
+
+I found this course both very interesting and genuinely challenging, and I am proud of what our group managed to create over the semester. Even though my role was less focused on hands-on implementation compared to some of my group members, being part of the full development process gave me valuable insight into how XR projects actually take shape in practice.
+
+Between the two main areas we explored, AR was the field that excited me the most. I strongly believe that AR has enormous potential going forward, especially in smaller-scale, practical applications rather than large, highly polished consumer products. Our AR navigation project made this very clear to me. The idea of using AR to enhance real-world environments in subtle but useful ways — such as navigation or spatial guidance — felt both realistic and impactful. I could easily imagine myself working on similar AR features in the future, where the goal is not to create something flashy, but something genuinely helpful.
+
+At the same time, this course made me realize just how difficult XR development can be. Many of the challenges we faced were not purely about writing code or building models, but about dealing with hardware limitations, software constraints, and unpredictable behaviour in both AR and VR environments. Watching how small changes in physics settings, tracking configurations, or headset calibration could dramatically affect the experience was eye-opening. It gave me a much greater appreciation for how fragile and interconnected XR systems are.
+
+I also came to terms with the fact that I personally found the course difficult. There were moments where it was hard to fully keep up with the technical implementation, especially during more complex Unity or physics-related work. In that sense, having a supportive and capable group was essential. Being present during development sessions, participating in testing, discussing design decisions, and documenting the process through the dev blogs allowed me to stay engaged and contribute meaningfully, even when I wasn’t the one directly implementing features.
+
+Overall, this course broadened my understanding of XR as a field. It showed me that building XR applications is rarely straightforward, but also that even rough prototypes can be incredibly rewarding when they work. Despite the challenges, the experience left me with a strong sense of accomplishment — not because everything was perfect, but because we managed to create functional AR and VR applications from scratch. That, to me, feels like a solid and motivating outcome.
