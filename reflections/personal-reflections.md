@@ -102,9 +102,9 @@ On a personal level, these projects strengthened my ability to troubleshoot comp
 
 ---
 
-##### List Of Contributions
+# Luu
 
-Throughout the course, most development work was carried out collaboratively with all group members present. My primary contributions were focused on ideation, testing, evaluation, and documentation, as well as supporting implementation through feedback and iteration rather than direct scripting.
+##### List Of Contributions
 
 ### **AR Navigation Project**
 - Contributed to early idea generation and concept development for the navigation experience  
